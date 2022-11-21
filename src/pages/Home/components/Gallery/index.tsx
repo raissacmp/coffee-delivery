@@ -1,25 +1,37 @@
 import { products } from "./products";
+import {
+  ContainerFlags,
+  DescriptionProduct,
+  Flag,
+  GalleryContainer,
+  NameProduct,
+  ShelfContainer,
+  TitleGallery,
+} from "./styles";
 
 export function Gallery() {
   return (
-    <main>
-      {products.map((product) => {
-        return (
-          <>
-            <div key={product.id}>
+    <>
+      <TitleGallery>Nossos cafés</TitleGallery>
+      <GalleryContainer>
+        {products.map((product) => {
+          return (
+            <ShelfContainer key={product.id}>
               <img src={product.image} />
-              {product.flags.map((flag, index) => {
-                return <span key={index}>{flag}</span>;
-              })}
-              <h1>{product.name}</h1>
-              <span>{product.description}</span>
-            </div>
-            <div>
-              <strong>{product.price}</strong>
-            </div>
-          </>
-        );
-      })}
-    </main>
+              <ContainerFlags>
+                {product.flags.map((flag, index) => {
+                  return <Flag key={index}>{flag}</Flag>;
+                })}
+              </ContainerFlags>
+              <NameProduct>{product.name}</NameProduct>
+              <DescriptionProduct>{product.description}</DescriptionProduct>
+              <div>
+                <strong>{product.price}</strong>
+              </div>
+            </ShelfContainer>
+          );
+        })}
+      </GalleryContainer>
+    </>
   );
 }
