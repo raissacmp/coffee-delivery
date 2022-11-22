@@ -13,7 +13,9 @@ import MiniCart from "../../assets/mini-cart.svg";
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={logoCoffee} alt="" />
+      <a href="/">
+        <img src={logoCoffee} alt="" />
+      </a>
       <HeaderContent>
         <HeaderLocationContent>
           <img src={MapPin} alt="" />

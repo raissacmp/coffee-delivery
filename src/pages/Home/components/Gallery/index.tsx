@@ -1,6 +1,8 @@
+import { CountQuantity } from "../CountQuantity";
 import { products } from "./products";
 import {
   ContainerFlags,
+  ContainerSelect,
   DescriptionProduct,
   Flag,
   GalleryContainer,
@@ -25,9 +27,13 @@ export function Gallery() {
               </ContainerFlags>
               <NameProduct>{product.name}</NameProduct>
               <DescriptionProduct>{product.description}</DescriptionProduct>
-              <div>
-                <strong>{product.price}</strong>
-              </div>
+              <ContainerSelect>
+                <strong>
+                  <span>R$</span>
+                  {product.price}
+                </strong>
+                <CountQuantity />
+              </ContainerSelect>
             </ShelfContainer>
           );
         })}

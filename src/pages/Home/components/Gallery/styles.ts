@@ -56,3 +56,26 @@ export const DescriptionProduct = styled.span`
   text-align: center;
   padding: 0.5rem 1.25rem;
 `;
+
+export const ContainerSelect = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 33px;
+  margin-bottom: 20px;
+
+  strong {
+    font-family: "Baloo 2";
+    font-weight: 800;
+    font-size: 24px;
+    color: #574f4d;
+  }
+
+  span {
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+`;
