@@ -6,7 +6,7 @@ import {
 } from "./styles";
 
 export function CountQuantity() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   return (
     <ContainerCountQuantity>
       <MinusQuantitySelect

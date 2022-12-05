@@ -1,6 +1,7 @@
 import { ShoppingCartSimple } from "phosphor-react";
+import { useState } from "react";
 import { CountQuantity } from "../CountQuantity";
-import { products } from "./products";
+import { products, Products } from "./products";
 import {
   ContainerFlags,
   ContainerSelect,
@@ -14,6 +15,18 @@ import {
 } from "./styles";
 
 export function Gallery() {
+  const [productsSelecteds, setProductsSelecteds] = useState({});
+  console.log(
+    "🚀 ~ file: index.tsx:19 ~ Gallery ~ productsSelecteds",
+    productsSelecteds
+  );
+
+  function handleSelectedProduct(product: Products) {
+    setProductsSelecteds({
+      product,
+    });
+  }
+
   return (
     <>
       <TitleGallery>Nossos cafés</TitleGallery>
@@ -36,7 +49,11 @@ export function Gallery() {
                 </strong>
                 <div>
                   <CountQuantity />
-                  <MiniCartShelf>
+                  <MiniCartShelf
+                    onClick={() => {
+                      handleSelectedProduct(product);
+                    }}
+                  >
                     <ShoppingCartSimple size={25} color="#fff" weight="fill" />
                   </MiniCartShelf>
                 </div>
