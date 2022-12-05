@@ -22,7 +22,7 @@ export function Header() {
           <span>Atibaia, SP</span>
         </HeaderLocationContent>
         <HeaderMiniCart>
-          <NavLink to="/cart" title="Cart">
+          <NavLink to="/checkout" title="Cart">
             <img src={MiniCart} alt="" />
           </NavLink>
         </HeaderMiniCart>
