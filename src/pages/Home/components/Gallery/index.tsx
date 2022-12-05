@@ -1,3 +1,4 @@
+import { ShoppingCartSimple } from "phosphor-react";
 import { CountQuantity } from "../CountQuantity";
 import { products } from "./products";
 import {
@@ -6,6 +7,7 @@ import {
   DescriptionProduct,
   Flag,
   GalleryContainer,
+  MiniCartShelf,
   NameProduct,
   ShelfContainer,
   TitleGallery,
@@ -32,7 +34,12 @@ export function Gallery() {
                   <span>R$</span>
                   {product.price}
                 </strong>
-                <CountQuantity />
+                <div>
+                  <CountQuantity />
+                  <MiniCartShelf>
+                    <ShoppingCartSimple size={25} color="#fff" weight="fill" />
+                  </MiniCartShelf>
+                </div>
               </ContainerSelect>
             </ShelfContainer>
           );

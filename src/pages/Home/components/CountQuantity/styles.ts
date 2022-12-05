@@ -14,6 +14,7 @@ export const BaseQuantitySelect = styled.button`
   border: none;
   background: transparent;
   color: ${(props) => props.theme["purple-default"]};
+  cursor: pointer;
 `;
 
 export const PlusQuantitySelect = styled(BaseQuantitySelect)`

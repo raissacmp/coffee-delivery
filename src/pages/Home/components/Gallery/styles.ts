@@ -47,7 +47,7 @@ export const Flag = styled.span`
 export const NameProduct = styled.h1`
   font-family: "Baloo 2";
   color: ${(props) => props.theme["base-subtitle"]};
-  font-size: 20px;
+  font-size: 1.25rem;
 `;
 
 export const DescriptionProduct = styled.span`
@@ -62,20 +62,36 @@ export const ContainerSelect = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
-  margin-top: 33px;
-  margin-bottom: 20px;
+  margin-top: 2.0625rem;
+  margin-bottom: 1.25rem;
 
   strong {
     font-family: "Baloo 2";
     font-weight: 800;
-    font-size: 24px;
-    color: #574f4d;
+    font-size: 1.5rem;
+    color: ${(props) => props.theme["base-text"]};
   }
 
   span {
     font-family: Roboto;
     font-weight: normal;
-    font-size: 14px;
-    margin-right: 5px;
+    font-size: 0.875rem;
+    margin-right: 0.3125rem;
   }
+  div {
+    display: flex;
+    gap: 0.5rem;
+  }
+`;
+
+export const MiniCartShelf = styled.button`
+  width: 2.375rem;
+  height: 2.375rem;
+  background: ${(props) => props.theme["purple-dark"]};
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
 `;
