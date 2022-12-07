@@ -6,3 +6,8 @@ export const TitleCart = styled.h1`
   font-family: "Baloo 2";
   color: ${(props) => props.theme["base-subtitle"]};
 `;
+
+export const MainCheckout = styled.main`
+  display: flex;
+  gap: 2rem;
+`;

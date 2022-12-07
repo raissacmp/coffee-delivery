@@ -22,10 +22,6 @@ export const ProductsSelectedContext = createContext(
   {} as ProductsSelectedContextType
 );
 
-interface ProductsState {
-  products: Products[];
-}
-
 export function ProductsSelectedContextProvider({
   children,
 }: ProductsSelecteContextProviderProps) {
