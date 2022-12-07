@@ -7,7 +7,11 @@ import {
 } from "react";
 import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
-import { addNewProductsSelectedsAction } from "../reducers/products/actions";
+import {
+  ActionTypes,
+  addNewProductsSelectedsAction,
+} from "../reducers/products/actions";
+import { produce } from "immer";
 
 export interface CreateProductsSelectedData {
   price: number;
@@ -16,7 +20,6 @@ export interface CreateProductsSelectedData {
 }
 
 interface ProductsSelectedContextType {
-  products: Products[];
   createProductsSelecteds: (product: CreateProductsSelectedData) => void;
 }
 
@@ -37,26 +40,15 @@ export function ProductsSelectedContextProvider({
 }: ProductsSelecteContextProviderProps) {
   const [productsState, dispatch] = useReducer(
     (state: ProductsState, action: any) => {
-      if (action.type === "ADD_NEW_PRODUCTS") {
-        return {
-          ...state,
-          products: [...state.products, action.payload.newProduct],
-        };
+      if (action.type === ActionTypes.ADD_NEW_PRODUCTS) {
+        return produce(state, (draft) => {
+          draft.products.push(action.payload.newProductsSelected);
+        });
       }
-      console.log("🚀 ~ file: ProductsContext.tsx:48 ~ state", state);
       return state;
     },
     { products: [] }
   );
-
-  const { products } = productsState;
-  console.log("🚀 ~ file: ProductsContext.tsx:53 ~ products", products);
-
-  // useEffect(() => {
-  //   const stateJSON = JSON.stringify(cyclesState);
-
-  //   localStorage.setItem("@pomodoro-timer:cycles-state-1.0.0", stateJSON); // padrão de nome: nome da aplicação + nome da informação + versão (pra prod)
-  // }, [cyclesState]);
 
   function createProductsSelecteds(product: CreateProductsSelectedData) {
     const newProductsSelected: CreateProductsSelectedData = {
@@ -71,7 +63,6 @@ export function ProductsSelectedContextProvider({
   return (
     <ProductsSelectedContext.Provider
       value={{
-        products,
         createProductsSelecteds,
       }}
     >
