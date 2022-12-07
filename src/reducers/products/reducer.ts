@@ -8,11 +8,10 @@ interface ProductsState {
 }
 
 export function productsReducer(state: ProductsState, action: any) {
-  switch (action.type) {
-    case ActionTypes.ADD_NEW_PRODUCTS: {
-      return produce(state, (draft) => {
-        draft.products.push(action.payload.newProductsSelected);
-      });
-    }
+  if (action.type === ActionTypes.ADD_NEW_PRODUCTS) {
+    return produce(state, (draft) => {
+      draft.products.push(action.payload.newProductsSelected);
+    });
   }
+  return state;
 }

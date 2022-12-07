@@ -1,17 +1,7 @@
-import {
-  createContext,
-  ReactNode,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, ReactNode, useReducer } from "react";
 import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
-import {
-  ActionTypes,
-  addNewProductsSelectedsAction,
-} from "../reducers/products/actions";
-import { produce } from "immer";
+import { addNewProductsSelectedsAction } from "../reducers/products/actions";
 
 export interface CreateProductsSelectedData {
   price: number;
@@ -21,6 +11,7 @@ export interface CreateProductsSelectedData {
 
 interface ProductsSelectedContextType {
   createProductsSelecteds: (product: CreateProductsSelectedData) => void;
+  products: Products[];
 }
 
 interface ProductsSelecteContextProviderProps {
@@ -38,17 +29,12 @@ interface ProductsState {
 export function ProductsSelectedContextProvider({
   children,
 }: ProductsSelecteContextProviderProps) {
-  const [productsState, dispatch] = useReducer(
-    (state: ProductsState, action: any) => {
-      if (action.type === ActionTypes.ADD_NEW_PRODUCTS) {
-        return produce(state, (draft) => {
-          draft.products.push(action.payload.newProductsSelected);
-        });
-      }
-      return state;
-    },
-    { products: [] }
-  );
+  const [productsState, dispatch] = useReducer(productsReducer, {
+    products: [],
+  });
+
+  const { products } = productsState;
+  console.log("🚀 ~ file: ProductsContext.tsx:47 ~ products", products);
 
   function createProductsSelecteds(product: CreateProductsSelectedData) {
     const newProductsSelected: CreateProductsSelectedData = {
@@ -64,6 +50,7 @@ export function ProductsSelectedContextProvider({
     <ProductsSelectedContext.Provider
       value={{
         createProductsSelecteds,
+        products,
       }}
     >
       {children}
