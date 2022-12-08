@@ -9,7 +9,7 @@ import {
   InputFormUf,
   MainFormAdress,
   FormAddressLines,
-} from "./style";
+} from "./styles";
 
 export function FormAddress() {
   return (

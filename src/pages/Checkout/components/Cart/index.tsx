@@ -1,6 +1,15 @@
 import { useContext } from "react";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
-import { ContentMainCart, ContentProductCart, MainCart } from "./styles";
+import { CountQuantity } from "../../../Home/components/CountQuantity";
+import { RemoveButton } from "./RemoveButton";
+import {
+  ContentMainCart,
+  ContentProductCart,
+  ContentSelectedAndRemoveProduct,
+  MainCart,
+  ProductPriceCart,
+  ProductTitleCart,
+} from "./styles";
 
 export function Cart() {
   const { products } = useContext(ProductsSelectedContext);
@@ -13,14 +22,14 @@ export function Cart() {
             <ContentProductCart>
               <img src={product.image} />
               <div>
-                <p>{product.name}</p>
-                <div>
-                  <span>selected</span>
-                  <span>remover</span>
-                </div>
+                <ProductTitleCart>{product.name}</ProductTitleCart>
+                <ContentSelectedAndRemoveProduct>
+                  <CountQuantity />
+                  <RemoveButton />
+                </ContentSelectedAndRemoveProduct>
               </div>
             </ContentProductCart>
-            <div>{product.price}</div>
+            <ProductPriceCart>R${product.price}</ProductPriceCart>
           </ContentMainCart>
         );
       })}
