@@ -14,10 +14,6 @@ export function ProductSelecteds({ product }: any) {
   console.log("🚀 ~ file: index.tsx:21 ~ Gallery ~ count", count);
 
   const changeQuantityCart = (quantity: number) => {
-    console.log(
-      "🚀 ~ file: index.tsx:17 ~ changeQuantityCart ~ quantity",
-      quantity
-    );
     setCount(quantity);
   };
 
@@ -29,10 +25,7 @@ export function ProductSelecteds({ product }: any) {
         <div>
           <ProductTitleCart>{product.name}</ProductTitleCart>
           <ContentSelectedAndRemoveProduct>
-            <CountQuantity
-              changeQuantity={changeQuantityCart}
-              count={product.quantity}
-            />
+            <CountQuantity changeQuantity={changeQuantityCart} count={count} />
             <RemoveButton />
           </ContentSelectedAndRemoveProduct>
         </div>

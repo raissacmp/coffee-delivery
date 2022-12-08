@@ -16,7 +16,6 @@ import {
 export function CardProduct({ product }: any) {
   const { createProductsSelecteds } = useContext(ProductsSelectedContext);
   const [count, setCount] = useState(0);
-  console.log("🚀 ~ file: index.tsx:21 ~ Gallery ~ count", count);
 
   const changeQuantity = (quantity: number) => {
     setCount(quantity);
