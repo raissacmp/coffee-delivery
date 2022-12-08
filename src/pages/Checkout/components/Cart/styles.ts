@@ -13,6 +13,24 @@ export const MainCart = styled.main`
   }
 `;
 
+export const ContentCartProducts = styled.div`
+  max-height: 18.75rem;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 35px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme["base-label"]};
+    border-radius: 20px;
+  }
+`;
+
 export const ContentMainCart = styled.div`
   display: flex;
   justify-content: space-between;
@@ -39,4 +57,20 @@ export const ContentSelectedAndRemoveProduct = styled.div`
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
+`;
+
+export const ProductsValuesCart = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+
+  span {
+    font-size: 0.875rem;
+    color: ${(props) => props.theme["base-text"]};
+  }
+
+  strong {
+    font-size: 1.25rem;
+    color: ${(props) => props.theme["base-subtitle"]};
+  }
 `;

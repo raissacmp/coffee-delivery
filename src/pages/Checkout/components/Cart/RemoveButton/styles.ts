@@ -9,6 +9,7 @@ export const ContainerButtonRemove = styled.button`
   align-items: center;
   border: none;
   justify-content: space-evenly;
+  cursor: pointer;
 
   p {
     color: ${(props) => props.theme["base-text"]};
