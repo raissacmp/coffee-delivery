@@ -1,21 +1,11 @@
 import { useContext } from "react";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
-import { CountQuantity } from "../../../Home/components/CountQuantity";
-import { RemoveButton } from "./RemoveButton";
-import {
-  ContentCartProducts,
-  ContentMainCart,
-  ContentProductCart,
-  ContentSelectedAndRemoveProduct,
-  MainCart,
-  ProductPriceCart,
-  ProductsValuesCart,
-  ProductTitleCart,
-} from "./styles";
+import { ProductSelecteds } from "./ProductsSelecteds";
+import { ContentCartProducts, MainCart, ProductsValuesCart } from "./styles";
 
 export function Cart() {
   const { products } = useContext(ProductsSelectedContext);
-  console.log("🚀 ~ file: index.tsx:6 ~ Cart ~ products", products);
+  console.log("🚀 ~ file: index.tsx:18 ~ Cart ~ products", products);
 
   const valueDelivery = 3.5;
 
@@ -23,21 +13,7 @@ export function Cart() {
     <MainCart>
       <ContentCartProducts>
         {products.map((product) => {
-          return (
-            <ContentMainCart>
-              <ContentProductCart>
-                <img src={product.image} />
-                <div>
-                  <ProductTitleCart>{product.name}</ProductTitleCart>
-                  <ContentSelectedAndRemoveProduct>
-                    <CountQuantity />
-                    <RemoveButton />
-                  </ContentSelectedAndRemoveProduct>
-                </div>
-              </ContentProductCart>
-              <ProductPriceCart>R${product.price}</ProductPriceCart>
-            </ContentMainCart>
-          );
+          return <ProductSelecteds product={product} />;
         })}
       </ContentCartProducts>
       <div>

@@ -7,10 +7,14 @@ export interface CreateProductsSelectedData {
   price: number;
   image?: string;
   name: string;
+  quantity: number;
 }
 
 interface ProductsSelectedContextType {
-  createProductsSelecteds: (product: CreateProductsSelectedData) => void;
+  createProductsSelecteds: (
+    product: CreateProductsSelectedData,
+    count: number
+  ) => void;
   products: Products[];
 }
 
@@ -30,13 +34,16 @@ export function ProductsSelectedContextProvider({
   });
 
   const { products } = productsState;
-  console.log("🚀 ~ file: ProductsContext.tsx:47 ~ products", products);
 
-  function createProductsSelecteds(product: CreateProductsSelectedData) {
+  function createProductsSelecteds(
+    product: CreateProductsSelectedData,
+    count: number
+  ) {
     const newProductsSelected: CreateProductsSelectedData = {
       price: product.price,
       image: product.image,
       name: product.name,
+      quantity: count,
     };
 
     dispatch(addNewProductsSelectedsAction(newProductsSelected));
