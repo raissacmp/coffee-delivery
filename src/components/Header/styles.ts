@@ -37,4 +37,20 @@ export const HeaderMiniCart = styled.nav`
   width: 2.375rem;
   height: 2.375rem;
   justify-content: center;
+  position: relative;
+
+  span {
+    position: absolute;
+    top: -0.625rem;
+    background: ${(props) => props.theme["yellow-dark"]};
+    border-radius: 1000px;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #ffffff;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -0.625rem;
+  }
 `;
