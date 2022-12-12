@@ -13,7 +13,9 @@ export function CountQuantity({
 }) {
   return (
     <ContainerCountQuantity>
-      <MinusQuantitySelect onClick={() => changeQuantity(count - 1)}>
+      <MinusQuantitySelect
+        onClick={() => count > 0 && changeQuantity(count - 1)}
+      >
         -
       </MinusQuantitySelect>
       {count}
