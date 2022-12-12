@@ -34,7 +34,6 @@ export function ProductsSelectedContextProvider({
   });
 
   const { products } = productsState;
-  console.log("🚀 ~ file: ProductsContext.tsx:37 ~ products", products);
 
   function createProductsSelecteds(
     product: CreateProductsSelectedData,

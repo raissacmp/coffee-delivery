@@ -9,17 +9,7 @@ export function Cart() {
   const valueDelivery = 3.5;
 
   const priceAmount = products.reduce((acumulador, valorAtual) => {
-    console.log(
-      "🚀 ~ file: index.tsx:15 ~ products.reduce ~ acumulador",
-      acumulador
-    );
-    console.log("total do acumulador!", acumulador);
-    console.log(
-      "🚀 ~ file: index.tsx:17 ~ products.reduce ~ acumulador",
-      acumulador
-    );
     const totalItem = valorAtual?.quantity * valorAtual.price;
-    console.log("total do item atual:", totalItem);
 
     return acumulador + totalItem;
   }, 0);
