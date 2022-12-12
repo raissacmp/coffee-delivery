@@ -11,26 +11,31 @@ import {
 
 export function ProductSelecteds({ product }: any) {
   const [count, setCount] = useState(product.quantity);
-  console.log("🚀 ~ file: index.tsx:21 ~ Gallery ~ count", count);
 
   const changeQuantityCart = (quantity: number) => {
     setCount(quantity);
   };
 
-  console.log("🚀 ~ file: index.tsx:12 ~ ProductSelecteds ~ product", product);
   return (
-    <ContentMainCart>
-      <ContentProductCart>
-        <img src={product.image} />
-        <div>
-          <ProductTitleCart>{product.name}</ProductTitleCart>
-          <ContentSelectedAndRemoveProduct>
-            <CountQuantity changeQuantity={changeQuantityCart} count={count} />
-            <RemoveButton />
-          </ContentSelectedAndRemoveProduct>
-        </div>
-      </ContentProductCart>
-      <ProductPriceCart>R${product.price}</ProductPriceCart>
-    </ContentMainCart>
+    <>
+      {count > 0 && (
+        <ContentMainCart>
+          <ContentProductCart>
+            <img src={product.image} />
+            <div>
+              <ProductTitleCart>{product.name}</ProductTitleCart>
+              <ContentSelectedAndRemoveProduct>
+                <CountQuantity
+                  changeQuantity={changeQuantityCart}
+                  count={count}
+                />
+                <RemoveButton />
+              </ContentSelectedAndRemoveProduct>
+            </div>
+          </ContentProductCart>
+          <ProductPriceCart>R${product.price}</ProductPriceCart>
+        </ContentMainCart>
+      )}
+    </>
   );
 }
