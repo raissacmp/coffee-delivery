@@ -5,7 +5,6 @@ import { ContentCartProducts, MainCart, ProductsValuesCart } from "./styles";
 
 export function Cart() {
   const { products } = useContext(ProductsSelectedContext);
-  console.log("🚀 ~ file: index.tsx:18 ~ Cart ~ products", products);
 
   const valueDelivery = 3.5;
 

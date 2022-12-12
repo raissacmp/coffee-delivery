@@ -16,6 +16,10 @@ export function ProductSelecteds({ product }: any) {
     setCount(quantity);
   };
 
+  const handleRemoveProduct = () => {
+    setCount(0);
+  };
+
   return (
     <>
       {count > 0 && (
@@ -29,7 +33,7 @@ export function ProductSelecteds({ product }: any) {
                   changeQuantity={changeQuantityCart}
                   count={count}
                 />
-                <RemoveButton />
+                <RemoveButton handleRemoveProduct={handleRemoveProduct} />
               </ContentSelectedAndRemoveProduct>
             </div>
           </ContentProductCart>
