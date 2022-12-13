@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from "react";
+import { createContext, ReactNode, useReducer, useState } from "react";
 import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
 import { addNewProductsSelectedsAction } from "../reducers/products/actions";
@@ -10,12 +10,23 @@ export interface CreateProductsSelectedData {
   quantity: number;
 }
 
+export interface DataFormAdress {
+  cep: string;
+  city: string;
+  complement: string;
+  district: string;
+  number: number;
+  uf: string;
+}
+
 interface ProductsSelectedContextType {
   createProductsSelecteds: (
     product: CreateProductsSelectedData,
     count: number
   ) => void;
   products: Products[];
+  handleCreateAddress: (data: any) => void;
+  dataForm: any;
 }
 
 interface ProductsSelecteContextProviderProps {
@@ -32,6 +43,8 @@ export function ProductsSelectedContextProvider({
   const [productsState, dispatch] = useReducer(productsReducer, {
     products: [],
   });
+  const [dataForm, setDataForm] = useState({});
+  console.log("🚀 ~ file: ProductsContext.tsx:38 ~ dataForm", dataForm);
 
   const { products } = productsState;
 
@@ -49,11 +62,17 @@ export function ProductsSelectedContextProvider({
     dispatch(addNewProductsSelectedsAction(newProductsSelected));
   }
 
+  function handleCreateAddress(data: DataFormAdress) {
+    setDataForm(data);
+  }
+
   return (
     <ProductsSelectedContext.Provider
       value={{
         createProductsSelecteds,
         products,
+        handleCreateAddress,
+        dataForm,
       }}
     >
       {children}
