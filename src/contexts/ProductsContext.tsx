@@ -17,6 +17,7 @@ export interface DataFormAdress {
   district: string;
   number: number;
   uf: string;
+  street: string;
 }
 
 interface ProductsSelectedContextType {
@@ -44,7 +45,6 @@ export function ProductsSelectedContextProvider({
     products: [],
   });
   const [dataForm, setDataForm] = useState({});
-  console.log("🚀 ~ file: ProductsContext.tsx:38 ~ dataForm", dataForm);
 
   const { products } = productsState;
 

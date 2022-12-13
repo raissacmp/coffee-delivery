@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
 import { ProductSelecteds } from "./ProductsSelecteds";
 import { ContentCartProducts, MainCart, ProductsValuesCart } from "./styles";
@@ -34,6 +35,9 @@ export function Cart() {
           <strong>Total</strong>
           <strong>R${priceAmount}</strong>
         </ProductsValuesCart>
+        <NavLink to="/order-placed" title="Order Placed">
+          <span>Confirmar Pedido</span>
+        </NavLink>
       </div>
     </MainCart>
   );

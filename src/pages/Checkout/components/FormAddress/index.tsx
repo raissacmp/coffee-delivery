@@ -33,7 +33,11 @@ export function FormAddress() {
           placeholder="CEP"
           {...register("cep")}
         />
-        <InputFormStreet type="text" placeholder="Rua" />
+        <InputFormStreet
+          type="text"
+          placeholder="Rua"
+          {...register("street")}
+        />
         <FormAddressLines>
           <InputFormCepAndNumberAndDistrict
             type="number"
