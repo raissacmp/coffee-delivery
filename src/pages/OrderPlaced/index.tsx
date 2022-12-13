@@ -15,7 +15,7 @@ import {
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 
 export function OrderPlaced() {
-  const { dataForm } = useContext(ProductsSelectedContext);
+  const { dataForm, buttonPaymentValue } = useContext(ProductsSelectedContext);
 
   return (
     <ContainerOrderPlaced>
@@ -56,7 +56,7 @@ export function OrderPlaced() {
             </ContainerIconeOrderPlacedPayment>
             <div>
               <p>Pagamento na entrega</p>
-              <strong>Cartão de Crédito </strong>
+              <strong>{buttonPaymentValue}</strong>
             </div>
           </ContentDatasOrderPlaced>
         </ContainerDatasOrderPlaced>

@@ -1,4 +1,7 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
+import { useContext } from "react";
+import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
+
 import {
   ButtonPayment,
   ContainerTitlePayment,
@@ -7,6 +10,7 @@ import {
 } from "./style";
 
 export function FormPayment() {
+  const { handleGetvalueButton } = useContext(ProductsSelectedContext);
   return (
     <MainFormPayment>
       <ContainerTitlePayment>
@@ -21,14 +25,14 @@ export function FormPayment() {
         </div>
       </ContainerTitlePayment>
       <ContainerButtonsPayment>
-        <ButtonPayment>
-          <CreditCard size={15} color="#8047F8" /> Cartão de crédito
+        <ButtonPayment value="Cartão de Crédito" onClick={handleGetvalueButton}>
+          <CreditCard size={15} color="#8047F8" /> Cartão de Crédito
         </ButtonPayment>
-        <ButtonPayment>
+        <ButtonPayment value="Cartão de Débito" onClick={handleGetvalueButton}>
           <Bank size={15} color="#8047F8" />
-          Cartão de débito
+          Cartão de Débito
         </ButtonPayment>
-        <ButtonPayment>
+        <ButtonPayment value=" Dinheiro" onClick={handleGetvalueButton}>
           <Money size={15} color="#8047F8" />
           Dinheiro
         </ButtonPayment>

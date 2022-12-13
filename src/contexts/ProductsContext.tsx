@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useReducer, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useReducer,
+  useState,
+  MouseEvent,
+} from "react";
 import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
 import { addNewProductsSelectedsAction } from "../reducers/products/actions";
@@ -28,6 +34,8 @@ interface ProductsSelectedContextType {
   products: Products[];
   handleCreateAddress: (data: any) => void;
   dataForm: any;
+  handleGetvalueButton: (event: MouseEvent<HTMLButtonElement>) => void;
+  buttonPaymentValue: string;
 }
 
 interface ProductsSelecteContextProviderProps {
@@ -45,6 +53,7 @@ export function ProductsSelectedContextProvider({
     products: [],
   });
   const [dataForm, setDataForm] = useState({});
+  const [buttonPaymentValue, setButtonPaymentValue] = useState("");
 
   const { products } = productsState;
 
@@ -66,6 +75,10 @@ export function ProductsSelectedContextProvider({
     setDataForm(data);
   }
 
+  function handleGetvalueButton(event: MouseEvent<HTMLButtonElement>) {
+    setButtonPaymentValue(event.currentTarget.value);
+  }
+
   return (
     <ProductsSelectedContext.Provider
       value={{
@@ -73,6 +86,8 @@ export function ProductsSelectedContextProvider({
         products,
         handleCreateAddress,
         dataForm,
+        handleGetvalueButton,
+        buttonPaymentValue,
       }}
     >
       {children}
