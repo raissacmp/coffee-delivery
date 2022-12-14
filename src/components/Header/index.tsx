@@ -13,7 +13,8 @@ import { useContext } from "react";
 import { ProductsSelectedContext } from "../../contexts/ProductsContext";
 
 export function Header() {
-  const { products } = useContext(ProductsSelectedContext);
+  const { products, dataForm } = useContext(ProductsSelectedContext);
+  console.log("🚀 ~ file: index.tsx:17 ~ Header ~ dataForm", dataForm);
 
   const quantityMIniCart = products.reduce((acumulador, valorAtual) => {
     const totalQuantityMiniCart = valorAtual.quantity;
@@ -29,7 +30,13 @@ export function Header() {
       <HeaderContent>
         <HeaderLocationContent>
           <img src={MapPin} alt="" />
-          <span>Atibaia, SP</span>
+          {dataForm?.city?.length && dataForm?.uf?.length ? (
+            <span>
+              {dataForm.city}, {dataForm.uf}
+            </span>
+          ) : (
+            <span>São Paulo, SP</span>
+          )}
         </HeaderLocationContent>
         <HeaderMiniCart>
           <NavLink to="/checkout" title="Cart">
