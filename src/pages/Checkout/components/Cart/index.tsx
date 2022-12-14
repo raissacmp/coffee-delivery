@@ -2,7 +2,13 @@ import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
 import { ProductSelecteds } from "./ProductsSelecteds";
-import { ContentCartProducts, MainCart, ProductsValuesCart } from "./styles";
+import {
+  ConfirmatedButton,
+  ContentCartProducts,
+  ContentSummaryCart,
+  MainCart,
+  ProductsValuesCart,
+} from "./styles";
 
 export function Cart() {
   const { products } = useContext(ProductsSelectedContext);
@@ -22,7 +28,7 @@ export function Cart() {
           return <ProductSelecteds product={product} />;
         })}
       </ContentCartProducts>
-      <div>
+      <ContentSummaryCart>
         <ProductsValuesCart>
           <span>Total de itens</span>
           <span>R$</span>
@@ -36,9 +42,9 @@ export function Cart() {
           <strong>R${priceAmount}</strong>
         </ProductsValuesCart>
         <NavLink to="/order-placed" title="Order Placed">
-          <span>Confirmar Pedido</span>
+          <ConfirmatedButton>Confirmar Pedido</ConfirmatedButton>
         </NavLink>
-      </div>
+      </ContentSummaryCart>
     </MainCart>
   );
 }
