@@ -28,7 +28,7 @@ export const ContainerTitlePayment = styled.div`
 `;
 
 export const ButtonPayment = styled.button`
-  background: #e6e5e5;
+  background: ${(props) => props.theme["base-button"]};
   border-radius: 6px;
   border: none;
   width: 178.67px;
@@ -37,12 +37,19 @@ export const ButtonPayment = styled.button`
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: #574f4d;
+  color: ${(props) => props.theme["base-text"]};
   text-transform: uppercase;
   cursor: pointer;
 
   svg {
     margin-right: 13px;
+  }
+  &:hover,
+  &.active,
+  &:focus {
+    border: 1px solid ${(props) => props.theme["purple-default"]};
+    border-radius: 6px;
+    background: ${(props) => props.theme["purple-light"]};
   }
 `;
 
