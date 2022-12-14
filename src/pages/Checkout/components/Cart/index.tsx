@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
 import { ProductSelecteds } from "./ProductsSelecteds";
@@ -11,7 +11,22 @@ import {
 } from "./styles";
 
 export function Cart() {
-  const { products } = useContext(ProductsSelectedContext);
+  const { products, dataForm } = useContext(ProductsSelectedContext);
+  const [dataFormEmpty, setDataFormEmpty] = useState(true);
+
+  //verificar se o objeto está vazio
+
+  useEffect(() => {
+    if (Object.keys(dataForm).length === 0) {
+      setDataFormEmpty(true);
+    }
+
+    if (Object.keys(dataForm).length > 0) {
+      setDataFormEmpty(false);
+    }
+  }, [dataForm]);
+
+  //
 
   const valueDelivery = 3.5;
 
@@ -20,6 +35,14 @@ export function Cart() {
 
     return acumulador + totalItem;
   }, 0);
+
+  // validation form
+
+  function handleAlertForm() {
+    if (dataFormEmpty === true) {
+      alert("Preencha os dados de entrega para seguir! 😊");
+    }
+  }
 
   return (
     <MainCart>
@@ -41,8 +64,13 @@ export function Cart() {
           <strong>Total</strong>
           <strong>R${priceAmount}</strong>
         </ProductsValuesCart>
-        <NavLink to="/order-placed" title="Order Placed">
-          <ConfirmatedButton>Confirmar Pedido</ConfirmatedButton>
+        <NavLink
+          to={`${dataFormEmpty === true ? "/checkout" : "/order-placed"}`}
+          title="Order Placed"
+        >
+          <ConfirmatedButton onClick={handleAlertForm}>
+            Confirmar Pedido
+          </ConfirmatedButton>
         </NavLink>
       </ContentSummaryCart>
     </MainCart>

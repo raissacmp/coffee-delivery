@@ -31,18 +31,24 @@ export function FormAddress() {
         <InputFormCepAndNumberAndDistrict
           type="number"
           placeholder="CEP"
-          {...register("cep")}
+          {...register("cep", {
+            required: true,
+          })}
         />
         <InputFormStreet
           type="text"
           placeholder="Rua"
-          {...register("street")}
+          {...register("street", {
+            required: true,
+          })}
         />
         <FormAddressLines>
           <InputFormCepAndNumberAndDistrict
             type="number"
             placeholder="Número"
-            {...register("number")}
+            {...register("number", {
+              required: true,
+            })}
           />
           <InputFormComplement
             type="text"
@@ -54,12 +60,16 @@ export function FormAddress() {
           <InputFormCepAndNumberAndDistrict
             type="text"
             placeholder="Bairro"
-            {...register("district")}
+            {...register("district", {
+              required: true,
+            })}
           />
           <InputFormCity
             type="text"
             placeholder="Cidade"
-            {...register("city")}
+            {...register("city", {
+              required: true,
+            })}
           />
           <InputFormUf type="text" placeholder="UF" {...register("uf")} />
         </FormAddressLines>
