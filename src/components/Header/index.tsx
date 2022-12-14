@@ -14,7 +14,6 @@ import { ProductsSelectedContext } from "../../contexts/ProductsContext";
 
 export function Header() {
   const { products, dataForm } = useContext(ProductsSelectedContext);
-  console.log("🚀 ~ file: index.tsx:17 ~ Header ~ dataForm", dataForm);
 
   const quantityMIniCart = products.reduce((acumulador, valorAtual) => {
     const totalQuantityMiniCart = valorAtual.quantity;
@@ -39,7 +38,10 @@ export function Header() {
           )}
         </HeaderLocationContent>
         <HeaderMiniCart>
-          <NavLink to="/checkout" title="Cart">
+          <NavLink
+            to={`${quantityMIniCart > 0 ? "/checkout" : ""}`} //logica dentro de string
+            title="Cart"
+          >
             <img src={MiniCart} alt="" />
             <span>{quantityMIniCart}</span>
           </NavLink>
