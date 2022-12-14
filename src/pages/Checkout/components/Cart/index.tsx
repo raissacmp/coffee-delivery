@@ -11,7 +11,9 @@ import {
 } from "./styles";
 
 export function Cart() {
-  const { products, dataForm } = useContext(ProductsSelectedContext);
+  const { products, dataForm, buttonPaymentValue } = useContext(
+    ProductsSelectedContext
+  );
   const [dataFormEmpty, setDataFormEmpty] = useState(true);
 
   //verificar se o objeto está vazio
@@ -40,7 +42,10 @@ export function Cart() {
 
   function handleAlertForm() {
     if (dataFormEmpty === true) {
-      alert("Preencha os dados de entrega para seguir! 😊");
+      alert("Preencha os dados de entrega para seguir! 🏠");
+    }
+    if (buttonPaymentValue === "") {
+      alert("Preencha a forma de pagamento para seguir! 💸");
     }
   }
 
@@ -65,7 +70,11 @@ export function Cart() {
           <strong>R${priceAmount}</strong>
         </ProductsValuesCart>
         <NavLink
-          to={`${dataFormEmpty === true ? "/checkout" : "/order-placed"}`}
+          to={`${
+            dataFormEmpty === true || buttonPaymentValue === ""
+              ? "/checkout"
+              : "/order-placed"
+          }`}
           title="Order Placed"
         >
           <ConfirmatedButton onClick={handleAlertForm}>
