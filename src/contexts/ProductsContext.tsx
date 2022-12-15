@@ -7,13 +7,17 @@ import {
 } from "react";
 import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
-import { addNewProductsSelectedsAction } from "../reducers/products/actions";
+import {
+  addNewProductsSelectedsAction,
+  updateCoffeeInCartByIdAction,
+} from "../reducers/products/actions";
 
 export interface CreateProductsSelectedData {
   price: number;
   image?: string;
   name: string;
   quantity: number;
+  id: number;
 }
 
 export interface DataFormAdress {
@@ -31,6 +35,7 @@ interface ProductsSelectedContextType {
     product: CreateProductsSelectedData,
     count: number
   ) => void;
+  updateCoffeeInCartById: (id: string, quantity: number) => void;
   products: Products[];
   handleCreateAddress: (data: any) => void;
   dataForm: any;
@@ -49,13 +54,12 @@ export const ProductsSelectedContext = createContext(
 export function ProductsSelectedContextProvider({
   children,
 }: ProductsSelecteContextProviderProps) {
-  const [productsState, dispatch] = useReducer(productsReducer, {
-    products: [],
-  });
+  const [productsState, dispatch] = useReducer(productsReducer, []);
+
   const [dataForm, setDataForm] = useState({});
   const [buttonPaymentValue, setButtonPaymentValue] = useState("");
 
-  const { products } = productsState;
+  const products = productsState;
 
   function createProductsSelecteds(
     product: CreateProductsSelectedData,
@@ -66,9 +70,14 @@ export function ProductsSelectedContextProvider({
       image: product.image,
       name: product.name,
       quantity: count,
+      id: product.id,
     };
 
     dispatch(addNewProductsSelectedsAction(newProductsSelected));
+  }
+
+  function updateCoffeeInCartById(id: string, quantity: number) {
+    dispatch(updateCoffeeInCartByIdAction(id, quantity));
   }
 
   function handleCreateAddress(data: DataFormAdress) {
@@ -83,6 +92,7 @@ export function ProductsSelectedContextProvider({
     <ProductsSelectedContext.Provider
       value={{
         createProductsSelecteds,
+        updateCoffeeInCartById,
         products,
         handleCreateAddress,
         dataForm,

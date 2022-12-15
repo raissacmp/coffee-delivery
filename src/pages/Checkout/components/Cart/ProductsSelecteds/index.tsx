@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProductsSelectedContext } from "../../../../../contexts/ProductsContext";
 import { CountQuantity } from "../../../../Home/components/CountQuantity";
 import { RemoveButton } from "../RemoveButton";
 import {
@@ -10,10 +11,13 @@ import {
 } from "./styles";
 
 export function ProductSelecteds({ product }: any) {
+  const { updateCoffeeInCartById } = useContext(ProductsSelectedContext);
+
   const [count, setCount] = useState(product.quantity);
 
   const changeQuantityCart = (quantity: number) => {
     setCount(quantity);
+    updateCoffeeInCartById(product.id, quantity);
   };
 
   const handleRemoveProduct = () => {

@@ -14,6 +14,7 @@ export function Cart() {
   const { products, dataForm, buttonPaymentValue } = useContext(
     ProductsSelectedContext
   );
+
   const [dataFormEmpty, setDataFormEmpty] = useState(true);
 
   //verificar se o objeto está vazio
