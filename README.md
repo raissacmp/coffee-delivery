@@ -22,4 +22,4 @@ In the directory you can run:
 2. `npm run dev`
 
 
-![](/src/assets/apresentation-coffee.mov)
+![](/src/assets/apresentation-coffee.gif)
