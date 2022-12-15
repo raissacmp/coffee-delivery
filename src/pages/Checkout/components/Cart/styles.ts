@@ -72,3 +72,9 @@ export const ConfirmatedButton = styled.button`
 export const ContentSummaryCart = styled.div`
   padding: 1.875rem 0;
 `;
+
+export const CartEmpty = styled.p`
+  color: ${(props) => props.theme["purple-default"]};
+  font-size: 0.875rem;
+  font-family: "Baloo 2";
+`;

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ProductsSelectedContext } from "../../../../contexts/ProductsContext";
 import { ProductSelecteds } from "./ProductsSelecteds";
 import {
+  CartEmpty,
   ConfirmatedButton,
   ContentCartProducts,
   ContentSummaryCart,
@@ -51,38 +52,44 @@ export function Cart() {
   }
 
   return (
-    <MainCart>
-      <ContentCartProducts>
-        {products.map((product) => {
-          return <ProductSelecteds product={product} />;
-        })}
-      </ContentCartProducts>
-      <ContentSummaryCart>
-        <ProductsValuesCart>
-          <span>Total de itens</span>
-          <span>R$</span>
-        </ProductsValuesCart>
-        <ProductsValuesCart>
-          <span>Entrega</span>
-          <span>R$ {valueDelivery}</span>
-        </ProductsValuesCart>
-        <ProductsValuesCart>
-          <strong>Total</strong>
-          <strong>R${priceAmount}</strong>
-        </ProductsValuesCart>
-        <NavLink
-          to={`${
-            dataFormEmpty === true || buttonPaymentValue === ""
-              ? "/checkout"
-              : "/order-placed"
-          }`}
-          title="Order Placed"
-        >
-          <ConfirmatedButton onClick={handleAlertForm}>
-            Confirmar Pedido
-          </ConfirmatedButton>
-        </NavLink>
-      </ContentSummaryCart>
-    </MainCart>
+    <>
+      {priceAmount > 0 ? (
+        <MainCart>
+          <ContentCartProducts>
+            {products.map((product) => {
+              return <ProductSelecteds product={product} />;
+            })}
+          </ContentCartProducts>
+          <ContentSummaryCart>
+            <ProductsValuesCart>
+              <span>Total de itens</span>
+              <span>R$ {priceAmount}</span>
+            </ProductsValuesCart>
+            <ProductsValuesCart>
+              <span>Entrega</span>
+              <span>R$ {valueDelivery}</span>
+            </ProductsValuesCart>
+            <ProductsValuesCart>
+              <strong>Total</strong>
+              <strong>R${priceAmount + valueDelivery}</strong>
+            </ProductsValuesCart>
+            <NavLink
+              to={`${
+                dataFormEmpty === true || buttonPaymentValue === ""
+                  ? "/checkout"
+                  : "/order-placed"
+              }`}
+              title="Order Placed"
+            >
+              <ConfirmatedButton onClick={handleAlertForm}>
+                Confirmar Pedido
+              </ConfirmatedButton>
+            </NavLink>
+          </ContentSummaryCart>
+        </MainCart>
+      ) : (
+        <CartEmpty>Nenhum produto selecionado! 🙁</CartEmpty>
+      )}
+    </>
   );
 }
