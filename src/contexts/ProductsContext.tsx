@@ -9,6 +9,7 @@ import { Products } from "../pages/Home/components/Gallery/products";
 import { productsReducer } from "../reducers/products/reducer";
 import {
   addNewProductsSelectedsAction,
+  deleteCoffeeInCartByIdAction,
   updateCoffeeInCartByIdAction,
 } from "../reducers/products/actions";
 
@@ -41,6 +42,7 @@ interface ProductsSelectedContextType {
   dataForm: any;
   handleGetvalueButton: (event: MouseEvent<HTMLButtonElement>) => void;
   buttonPaymentValue: string;
+  deleteCoffeeInCartById: (id: string) => void;
 }
 
 interface ProductsSelecteContextProviderProps {
@@ -80,6 +82,10 @@ export function ProductsSelectedContextProvider({
     dispatch(updateCoffeeInCartByIdAction(id, quantity));
   }
 
+  function deleteCoffeeInCartById(id: string) {
+    dispatch(deleteCoffeeInCartByIdAction(id));
+  }
+
   function handleCreateAddress(data: DataFormAdress) {
     setDataForm(data);
   }
@@ -98,6 +104,7 @@ export function ProductsSelectedContextProvider({
         dataForm,
         handleGetvalueButton,
         buttonPaymentValue,
+        deleteCoffeeInCartById,
       }}
     >
       {children}

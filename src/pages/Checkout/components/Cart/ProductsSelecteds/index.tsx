@@ -11,7 +11,9 @@ import {
 } from "./styles";
 
 export function ProductSelecteds({ product }: any) {
-  const { updateCoffeeInCartById } = useContext(ProductsSelectedContext);
+  const { updateCoffeeInCartById, deleteCoffeeInCartById } = useContext(
+    ProductsSelectedContext
+  );
 
   const [count, setCount] = useState(product.quantity);
 
@@ -21,7 +23,7 @@ export function ProductSelecteds({ product }: any) {
   };
 
   const handleRemoveProduct = () => {
-    setCount(0);
+    deleteCoffeeInCartById(product.id);
   };
 
   return (

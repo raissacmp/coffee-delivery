@@ -19,5 +19,8 @@ export function productsReducer(state: Products[], action: any) {
     });
   }
 
+  if (action.type === ActionTypes.DELETE_COFFEE_IN_CART_BY_ID)
+    return state.filter((coffee) => coffee.id !== action.payload.coffeeId);
+
   return state;
 }
